@@ -1,3 +1,0 @@
-class BaseWallet(object):
-    
-    pass

@@ -397,7 +397,7 @@ class HistoryData(object):
         return self.__tid
 
     def get_date(self):
-        return self.__date
+        return datetime.datetime.fromtimestamp(float(self.__date))
 
     def get_price(self):
         return self.__price

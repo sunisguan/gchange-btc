@@ -4,7 +4,9 @@ from ..btcc.btcc_http_client import BtccHttpClient
 from .btcc_exchange import BtccExchange, BtccWebsocketClient
 import btcc_model as bm
 import common
-import time
+import btcc_model_db
+from peewee import *
+import utils
 
 class BtccTestCase(unittest.TestCase):
 
@@ -37,6 +39,17 @@ class BtccTestCase(unittest.TestCase):
     def testTicker(self):
         btcc = BtccHttpClient()
         bm.Ticker(**btcc.get_ticker()['ticker'])
+
+    def testUtils(self):
+        time2stamp = utils.time_to_stamp('2016-01-01 00:00:00')
+        stamp2time = utils.stamp_to_time(1480847339)
+        common.logger.debug(time2stamp)
+        common.logger.debug(stamp2time)
+
+    def testDB(self):
+        common.logger.debug(btcc_model_db.DB_HISTORY_DATA_FILE)
+
+
 
 
 
